@@ -115,7 +115,10 @@ class CarState(object):
     self.seatbelt = (cp.vl["SEATBELT_STATUS"]['SEATBELT_DRIVER_UNLATCHED'] == 0)
 
     self.brake_pressed = cp.vl["BRAKE_2"]['BRAKE_PRESSED_2'] == 5 # human-only
-    self.pedal_gas = cp.vl["ACCEL_PEDAL_MSG"]['ACCEL_PEDAL']
+
+    # uncomment Option 1 to have gas disengage and comment out Option 2
+    # self.pedal_gas = cp.vl["ACCEL_PEDAL_MSG"]['ACCEL_PEDAL'] # Option 1
+    self.pedal_gas = 0 # Option 2: More like Chrysler ACC--gas to accel while engaged
     self.car_gas = self.pedal_gas
     self.esp_disabled = (cp.vl["TRACTION_BUTTON"]['TRACTION_OFF'] == 1)
 
